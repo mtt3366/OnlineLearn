@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
     data.category = req.query.category || '';
     data.count = 0;
     data.page = Number(req.query.page || 1);
-    data.limit = 10;
+    data.limit = 3;//这里修改每页的限制
     data.pages = 0;
 
     var where = {};

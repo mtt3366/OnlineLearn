@@ -75,5 +75,6 @@ var db=mongoose.connect('mongodb://localhost:27017/Blog2', function(err) {
     } else {
         console.log('数据库连接成功');
         app.listen(8081);
+        console.log('打开本地端口: http://localhost:8081/ ');
     }
 });

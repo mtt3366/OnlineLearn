@@ -162,6 +162,10 @@ header .school-title{
   bottom: 80px;
   left: 30%;
   color: #2096f2;
+  padding: 10px;
+    border: 1px solid white;
+    border-radius: 15px;
+    background: rgba(255,255,255,.4);
 }
 nav {
   height: 56px;
