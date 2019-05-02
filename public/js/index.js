@@ -35,12 +35,12 @@ $(function() {
             success: function(result) {
                 $registerBox.find('.colWarning').html(result.message);
 
-                if (!result.code) {
+                if (!result.code) {//传回来的是0
                     //注册成功
                     setTimeout(function() {
                         $loginBox.show();
                         $registerBox.hide();
-                    }, 1000);
+                    }, 1500);
                 }
 
             }

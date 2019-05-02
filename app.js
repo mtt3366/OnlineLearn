@@ -1,7 +1,3 @@
-/**
- * Created by 毅 on 2016/7/30.
- * 应用程序的启动（入口）文件
- */
 
 //加载express模块
 var express = require('express');

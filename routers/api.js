@@ -1,6 +1,3 @@
-/**
- * Created by 毅 on 2016/8/28.
- */
 
 var express = require('express');
 var router = express.Router();
@@ -11,8 +8,8 @@ var Content = require('../models/Content');
 var responseData;
 
 router.use( function(req, res, next) {
-    responseData = {
-        code: 0,
+    responseData = {//,初始化一下返回数据
+        code: 0,//0代表无任何错误
         message: ''
     }
 
@@ -60,9 +57,9 @@ router.post('/user/register', function(req, res, next) {
     }
 
     //用户名是否已经被注册了，如果数据库中已经存在和我们要注册的用户名同名的数据，表示该用户名已经被注册了
-    User.findOne({
+    User.findOne({//find方法和findOne方法是类的方法,sava必须new一个对象,对象方法因为是
         username: username
-    }).then(function( userInfo ) {
+    }).then(function( userInfo ) {//返回值是查到的用户数据全部
         if ( userInfo ) {
             //表示数据库中有该记录
             responseData.code = 4;
@@ -71,12 +68,12 @@ router.post('/user/register', function(req, res, next) {
             return;
         }
         //保存用户注册的信息到数据库中
-        var user = new User({
+        var user = new User({//表示每一条记录,可以插入到数据库中
             username: username,
             password: password
         });
-        return user.save();
-    }).then(function(newUserInfo) {
+        return user.save();//返回的是一个promise对象,代表是否成功,所以结果可以继续在下面写
+    }).then(function(newUserInfo) {//当保存成功后,他会执行这个回调函数,并且同时会把这个新纪录插入到这个参数里来
         responseData.message = '注册成功';
         res.json(responseData);
     });
