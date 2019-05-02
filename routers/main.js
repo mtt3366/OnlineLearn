@@ -12,7 +12,7 @@ var data;
 * */
 router.use(function (req, res, next) {
     data = {
-        userInfo: req.userInfo,
+        userInfo: req.userInfo,//cookie里面的登录信息,如果没有的话,前台就不会继续出现已经登录的页面
         categories: []
     }
 

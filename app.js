@@ -32,12 +32,16 @@ swig.setDefaults({cache: false});
 //bodyparser设置,解析post的urlencoded类型的请求
 app.use( bodyParser.urlencoded({extended: true}) );
 
-//设置cookie
-app.use( function(req, res, next) {
+//设置cookie的处理,保存用户登录状态
+app.use( function(req, res, next) {//不论用户走哪个请求,斗湖走这个中间件,用来处理
     req.cookies = new Cookies(req, res);
+    //req.cookies下面的get方法和set方法操作cookie,先放在中间件里面,方便api第116行来进行操作
 
     //解析登录用户的cookie信息
     req.userInfo = {};
+    //做两件事
+    //1. 如果有userInfo,就吧req里加上userInfo的id和用户名,没有就啥都不做
+    //2. 如果是管理员,就要在req里加上
     if (req.cookies.get('userInfo')) {
         try {
             req.userInfo = JSON.parse(req.cookies.get('userInfo'));

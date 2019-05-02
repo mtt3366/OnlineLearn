@@ -100,7 +100,7 @@ router.post('/user/login', function(req, res) {
     }).then(function(userInfo) {
         if (!userInfo) {
             responseData.code = 2;
-            responseData.message = '用户名或密码错误';
+            responseData.message = '用户名不存在或密码错误';
             res.json(responseData);
             return;
         }
@@ -110,6 +110,9 @@ router.post('/user/login', function(req, res) {
             _id: userInfo._id,
             username: userInfo.username
         }
+        //登录成功后还需要做一个事情,就是给客户端发送一个cookie,
+        //以后只要访问我们的站点,都会把这个cookie通过头信息的方式带过来给服务端
+        //服务端来验证我们是否是登录状态
         req.cookies.set('userInfo', JSON.stringify({
             _id: userInfo._id,
             username: userInfo.username
