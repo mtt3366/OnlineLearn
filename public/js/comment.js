@@ -45,6 +45,7 @@ $('.pager').delegate('a', 'click', function() {
 function renderComment() {
 
     $('#messageCount').html(comments.length);
+    $('#messageCount2').html(comments.length);
 
     pages = Math.max(Math.ceil(comments.length / prepage), 1);
     var start = Math.max(0, (page-1) * prepage);

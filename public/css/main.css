@@ -206,7 +206,7 @@ main .listBoxMore {
 }
 main .mainLeft .listBox .function {
   padding: 10px 0px;
-  text-align: left;
+  text-align: center;
   margin: 5px 0px 0px;
 }
 main .mainLeft .listBox .function.bortop {
@@ -421,4 +421,14 @@ footer .fotBox span {
   line-height: 79px;
   border-top: 1px solid #303030;
   color: #555;
+}
+.jianjie{
+  display: inline-block;
+    background: rgba(7, 17, 27, 0.6);
+    border-radius: 12px;
+    padding: 2px 10px;
+    margin-right: 20px;
+    margin-bottom: 2px;
+    font-weight: 200;
+    color:#fff;
 }
