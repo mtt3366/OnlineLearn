@@ -19,7 +19,7 @@ var app = express();
 var User = require('./models/User');
 
 //设置静态文件托管
-//当用户访问的url以/public开始，那么直接返回对应__dirname + '/public'下的文件
+//当用户访问的url以/public开始，那么直接返回对应服务器的__dirname + '/public'下的文件
 app.use( '/public', express.static( __dirname + '/public') );
 
 //配置应用模板
@@ -33,7 +33,7 @@ app.set('view engine', 'html');
 //在开发过程中，需要取消模板缓存
 swig.setDefaults({cache: false});
 
-//bodyparser设置
+//bodyparser设置,解析post的urlencoded类型的请求
 app.use( bodyParser.urlencoded({extended: true}) );
 
 //设置cookie

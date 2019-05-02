@@ -17,4 +17,4 @@ module.exports = new mongoose.Schema({
         default: false
     }
 
-});
+},{timestamps: {createdAt: 'created', updatedAt: 'updated'}, usePushEach: true});

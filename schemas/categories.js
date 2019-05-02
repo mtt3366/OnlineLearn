@@ -10,4 +10,4 @@ module.exports = new mongoose.Schema({
     //分类名称
     name: String
 
-});
+},{timestamps: {createdAt: 'created', updatedAt: 'updated'}, usePushEach: true});
