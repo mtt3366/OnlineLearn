@@ -43,13 +43,13 @@ router.get('/user', function(req, res) {
     * */
 
     var page = Number(req.query.page || 1);
-    var limit = 10;
+    var limit = 5;
     var pages = 0;
 
     User.count().then(function(count) {
-
+        //count是总条数
         //计算总页数
-        pages = Math.ceil(count / limit);
+        pages = Math.ceil(count / limit);//向上取整
         //取值不能超过pages
         page = Math.min( page, pages );
         //取值不能小于1
@@ -65,7 +65,8 @@ router.get('/user', function(req, res) {
                 count: count,
                 pages: pages,
                 limit: limit,
-                page: page
+                page: page,
+                fenyeUrl:'user'
             });
         });
 
@@ -79,7 +80,7 @@ router.get('/user', function(req, res) {
 router.get('/category', function(req, res) {
 
     var page = Number(req.query.page || 1);
-    var limit = 10;
+    var limit = 5;
     var pages = 0;
 
     Category.count().then(function(count) {
@@ -105,7 +106,9 @@ router.get('/category', function(req, res) {
                 count: count,
                 pages: pages,
                 limit: limit,
-                page: page
+                page: page,
+
+                fenyeUrl:'category'
             });
         });
 
@@ -278,7 +281,7 @@ router.get('/category/delete', function(req, res) {
 router.get('/content', function(req, res) {
 
     var page = Number(req.query.page || 1);
-    var limit = 10;
+    var limit = 5;
     var pages = 0;
 
     Content.count().then(function(count) {
@@ -302,7 +305,8 @@ router.get('/content', function(req, res) {
                 count: count,
                 pages: pages,
                 limit: limit,
-                page: page
+                page: page,
+                fenyeUrl:'content'
             });
         });
 
