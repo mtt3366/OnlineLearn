@@ -124,7 +124,7 @@ button {
   *zoom: 1;
 }
 header {
-  height: 222px;
+  height:150px;
   position: relative;
   overflow: hidden;
 }
@@ -159,13 +159,14 @@ header .school-title{
   display: inline-block;
   position: absolute;
   font: 600 50px/50px "微软雅黑";
-  bottom: 80px;
-  left: 30%;
-  color: #2096f2;
+  bottom: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #f4ffbb;
   padding: 10px;
-    border: 1px solid white;
-    border-radius: 15px;
-    background: rgba(255,255,255,.4);
+  /* border: 1px solid white; */
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.64);
 }
 nav {
   height: 56px;
