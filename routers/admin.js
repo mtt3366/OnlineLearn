@@ -226,7 +226,7 @@ router.post('/category/edit', function(req, res) {
             } else {
                 //要修改的分类名称是否已经在数据库中存在
                 return Category.findOne({
-                    _id: {$ne: id},
+                    _id: {$ne: id},//数据库里的id和我要修改的这个id不一样，名字一样
                     name: name
                 });
             }
@@ -266,11 +266,24 @@ router.get('/category/delete', function(req, res) {
     Category.remove({
         _id: id
     }).then(function() {
-        res.render('admin/success', {
+        //删除完分类以后，也要把该分类下面的文章都删除
+        Content.remove({
+            category:{
+                _id: id
+            }
+        }).then(function() {
+            res.render('admin/success', {
             userInfo: req.userInfo,
-            message: '删除成功',
+            message: '分类与该分类下的文章全部删除成功',
             url: '/admin/category'
         });
+        });
+
+        // res.render('admin/success', {
+        //     userInfo: req.userInfo,
+        //     message: '分类与该分类下的文章全部删除成功',
+        //     url: '/admin/category'
+        // });
     });
 
 });
