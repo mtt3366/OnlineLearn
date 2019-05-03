@@ -198,8 +198,11 @@ main .mainLeft {
 main .mainLeft .listBox {
   background: #fff;
   padding: 20px 35px;
-  text-align: center;
+
   margin-bottom: 30px;
+}
+main .mainLeft .listBox .tc{
+  text-align: center;
 }
 main .listBoxMore {
   cursor: pointer;
@@ -431,4 +434,15 @@ footer .fotBox span {
     margin-bottom: 2px;
     font-weight: 200;
     color:#fff;
+}
+.kechengtag{
+  display: inline-block;
+    background: rgba(24, 115, 206, 0.6);
+    border-radius: 12px;
+    padding: 2px 10px;
+    margin-right: 20px;
+    margin-bottom: 2px;
+    font-weight: 200;
+    color:#fff;
+    border:1px solid #986291;
 }

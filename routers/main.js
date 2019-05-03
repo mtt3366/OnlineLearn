@@ -67,12 +67,18 @@ router.get('/view', function (req, res){
     Content.findOne({
         _id: contentId
     }).then(function (content) {
-        data.content = content;
-
         content.views++;
+        data.content = content;
         content.save();
 
-        res.render('main/view', data);
+        Category.findOne({//找到分類名字
+            _id:content.category
+        }).then(function(category){
+            console.log(category);
+            data.content.category = category
+            res.render('main/view', data);
+        })
+        
     });
 
 });

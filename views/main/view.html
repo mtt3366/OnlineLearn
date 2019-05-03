@@ -2,13 +2,28 @@
 
 {%block content%}
     <div class="listBox">
-        <h1>{{content.title}}</h1>
-        <p class="colDefault">
+        <h1 class="tc">{{content.title}}</h1>
+        <p class="colDefault tc">
             作者：<span class="colInfo">{{content.user.username}}</span> -
             时间：<span class="colInfo">{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</span> -
             阅读：<span class="colInfo">{{content.views}}</span> -
             评论：<span class="colInfo" id="messageCount2">{{content.comments.length}}</span>
         </p>
+        <p><span class="jianjie">课程简介</span>{{content.description}}</p>
+        <p><span class="jianjie">课程Tag</span><span class='kechengtag'>{{content.category.name}}</span></p>
+        <div>
+            <span class="jianjie">课程封面</span>
+            <div>
+                    <img src="/public/showCover/{{content.coverUrl}}" alt="" width="400px" height="255px" style="display:block;margin:0 auto">
+            </div>
+        </div>
+        <span class="jianjie">视频学习</span>
+            <div>
+             <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="750" height="500"
+                    poster="/public/showCover/{{content.coverUrl}}">
+               <source src="/public/showVideo/{{content.videoUrl}}" type="video/mp4">
+             </video>
+            </div>
         <dfn>
             {{content.content}}
         </dfn>

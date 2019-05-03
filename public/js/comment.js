@@ -2,7 +2,7 @@ var prepage = 10;
 var page = 1;
 var pages = 0;
 var comments = [];
-
+$('dfn').html(marked($('dfn').text()))//把文字转化为markdown
 //提交评论
 $('#messageBtn').on('click', function() {
     $.ajax({

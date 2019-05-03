@@ -1,6 +1,7 @@
 
 
 var express = require('express');
+
 var router = express.Router();
 
 var User = require('../models/User');
@@ -364,9 +365,10 @@ router.post('/content/add', function(req, res) {
         title: req.body.title,
         user: req.userInfo._id.toString(),
         description: req.body.description,
-        content: req.body.content
+        content: req.body.content,
+        videoUrl:req.body.videoUrl,
+        coverUrl:req.body.coverUrl
     }).save().then(function(newContent) {//保存成功后，相关分类的长度加一
-        console.log(req.body.category);
         Category.findOne({
             _id:req.body.category//这里是id
         }).then(function (category) {
@@ -445,7 +447,9 @@ router.post('/content/edit', function(req, res) {
         category: req.body.category,
         title: req.body.title,
         description: req.body.description,
-        content: req.body.content
+        content: req.body.content,
+        videoUrl:req.body.videoUrl,
+        coverUrl:req.body.coverUrl
     }).then(function() {
         res.render('admin/success', {
             userInfo: req.userInfo,

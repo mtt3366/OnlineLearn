@@ -48,6 +48,18 @@ module.exports = new mongoose.Schema({
         default: ''
     },
 
+    //video
+    videoUrl: {
+        type: String,
+        default: ''
+    },
+
+    //内容
+    coverUrl: {
+        type: String,
+        default: ''
+    },
+
     //评论
     comments: {
         type: Array,
