@@ -278,12 +278,6 @@ router.get('/category/delete', function(req, res) {
             url: '/admin/category'
         });
         });
-
-        // res.render('admin/success', {
-        //     userInfo: req.userInfo,
-        //     message: '分类与该分类下的文章全部删除成功',
-        //     url: '/admin/category'
-        // });
     });
 
 });
@@ -371,14 +365,21 @@ router.post('/content/add', function(req, res) {
         user: req.userInfo._id.toString(),
         description: req.body.description,
         content: req.body.content
-    }).save().then(function(rs) {
-        res.render('admin/success', {
-            userInfo: req.userInfo,
-            message: '内容保存成功',
-            url: '/admin/content'
-        })
-    });
+    }).save().then(function(newContent) {//保存成功后，相关分类的长度加一
+        console.log(req.body.category);
+        Category.findOne({
+            _id:req.body.category//这里是id
+        }).then(function (category) {
+            category.contentLength++;
+            category.save();
 
+            res.render('admin/success', {
+                userInfo: req.userInfo,
+                message: '内容保存成功，文章数+1',
+                url: '/admin/content'
+            })
+        });
+    });
 });
 
 /*

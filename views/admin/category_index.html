@@ -15,13 +15,18 @@
     <tr>
         <th>ID</th>
         <th>分类名称</th>
+        <th>该分类下的文章数量</th>
         <th>操作</th>
+        
     </tr>
 
     {% for category in categories %}
     <tr>
+        <input type="hidden" class="categoryNameItem" data-vla='{{category.name}}'>
+        <input type="hidden" class="categoryLengthItem" data-vla='{{category.contentLength}}'>
         <td>{{category._id.toString()}}</td>
         <td>{{category.name}}</td>
+        <td>{{category.contentLength}}</td>
         <td>
             <a href="/admin/category/edit?id={{category._id.toString()}}">修改</a> |
             <a href="/admin/category/delete?id={{category._id.toString()}}">删除</a>
@@ -30,7 +35,8 @@
     {% endfor %}
 
 </table>
-
 {% include 'page.html' %}
+<div id="showCategoryChart" style="width: 600px;height:600px; margin:0 auto;">
 
+</div>
 {% endblock %}
