@@ -12,25 +12,31 @@
 <table class="table table-hover table-striped">
 
     <tr>
-        <th>ID</th>
         <th>用户名</th>
         <th>密码</th>
         <th>是否是管理员</th>
+        <th>总学习次数</th>
     </tr>
 
     {% for user in users %}
     <tr>
-        <td>{{user._id.toString()}}</td>
         <td>{{user.username}}</td>
         <td>{{user.password}}</td>
         <td>
             {%if user.isAdmin%}是{%endif%}
         </td>
+        <td>
+            {{user.viewHistory.length}}
+            <input type="hidden" class="viewHistoryHidden" data-username='{{user.username}}' data-view='{{user.viewHistory.length}}'>
+        </td>
     </tr>
+    <tr></tr>
     {% endfor %}
 
 </table>
+<div id="showViewCountChart" style="width: 600px;height:600px; margin:0 auto;">
 
+</div>
 {% include 'page.html' %}
 
 {% endblock %}

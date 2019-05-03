@@ -24,7 +24,7 @@
 
     {% for content in contents %}
     <tr>
-        <td><img src="public/showCover/{{content.coverUrl}}" alt="" width='300px' height="200px"></td>
+        <td><img src="/public/showCover/{{content.coverUrl}}" alt="" width='100px' height="50px"></td>
         <td>{{content.category.name}}</td>
         <td>{{content.title}}</td>
         <td>{{content.user.username}}</td>
@@ -37,7 +37,7 @@
         </td>
     </tr>
     <tr>
-        <td class="commentChart"  style="width: 600px;height:300px;" contentTitle="{{content.title}}" contentViews='{{content.views}}' commentsLength='{{content.comments.length}}' >
+        <td class="commentChart"  style="width: 400px;height:300px;" contentTitle="{{content.title}}" contentViews='{{content.views}}' commentsLength='{{content.comments.length}}' >
             
         </td>
     </tr>
