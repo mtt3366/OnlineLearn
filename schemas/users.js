@@ -13,6 +13,11 @@ module.exports = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
+    },
+    //观看历史
+    viewHistory:{
+        type: Array,
+        default: []
     }
 
 },{timestamps: {createdAt: 'created', updatedAt: 'updated'}, usePushEach: true});

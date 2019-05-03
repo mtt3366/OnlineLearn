@@ -10,7 +10,7 @@ var responseData;
 router.use( function(req, res, next) {
     responseData = {//,初始化一下返回数据
         code: 0,//0代表无任何错误
-        message: ''
+        message: '',
     }
 
     next();
@@ -170,4 +170,52 @@ router.post('/comment/post', function(req, res) {
     });
 });
 
+/**
+ * 学习历史的提交
+ */
+
+router.post('/addHistory', function(req, res) {
+    //内容的id
+    var contentId = req.body.contentid || '';
+    var contentTitle = req.body.contentTitle || '';
+    if(!contentId||!contentTitle){
+        return
+    }
+    //窑要存的历史的三个字段，用户名，这篇文章内容的id，现在的时间
+    var postData = {
+        username: req.userInfo.username,
+        contentId: contentId,
+        contentTitle:contentTitle,
+        postTime: new Date(),
+    };
+
+ 
+    //查询到这个用户，把历史纪录存进去
+    User.findOne({
+        username: req.userInfo.username//
+    }).then(function(user) {
+        user.viewHistory.push(postData);
+        return user.save();
+    }).then(function(newUser) {
+        responseData.message = '添加历史纪录成功';
+        responseData.data = newUser;
+        res.json(responseData);
+    });
+});
+/**
+ * 
+ * 学习历史的获取
+ */
+router.get('/getHistory', function(req, res) {
+    var username = req.userInfo.username;
+
+    User.findOne({
+        username: username
+    }).then(function(user) {
+        console.log(user.viewHistory);
+        responseData.data = user.viewHistory;
+        console.log(responseData);
+        res.json(responseData);
+    })
+});
 module.exports = router;

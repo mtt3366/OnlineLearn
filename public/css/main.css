@@ -446,3 +446,36 @@ footer .fotBox span {
     color:#fff;
     border:1px solid #986291;
 }
+#historyArea .item{
+  margin-top:15px;
+    
+    border-left: 2px solid #009A61;
+}
+span.shenglue{
+ 
+  display: inline-block;
+    width: 140px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  vertical-align:middle;
+  padding-left:10px;
+}
+span.shenglue a{
+
+  text-decoration: none;
+  color: #000000;
+}
+span.shenglue a:hover{
+  cursor: pointer;
+  color: #009A61;
+}
+span.shenglue:hover{
+  background: #f3f3f3;
+}
+dfn img{
+  max-width: 600px;
+}
+.tobig{
+  font-weight: 600;
+}

@@ -373,13 +373,15 @@ router.post('/content/add', function(req, res) {
             _id:req.body.category//这里是id
         }).then(function (category) {
             category.contentLength++;
-            category.save();
+            category.save().then(function(category){//保存成功
+                res.render('admin/success', {
+                    userInfo: req.userInfo,
+                    message: '内容保存成功，文章数+1',
+                    url: '/admin/content'
+                })
+            });
 
-            res.render('admin/success', {
-                userInfo: req.userInfo,
-                message: '内容保存成功，文章数+1',
-                url: '/admin/content'
-            })
+            
         });
     });
 });
