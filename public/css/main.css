@@ -479,3 +479,13 @@ dfn img{
 .tobig{
   font-weight: 600;
 }
+h3{
+  font-size: 24px;
+}
+.messageBox{
+  border-left: 2px solid #009A61;
+}
+.tobig2{
+  font-weight: bold;
+  color: #009a61;
+}

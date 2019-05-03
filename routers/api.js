@@ -212,9 +212,7 @@ router.get('/getHistory', function(req, res) {
     User.findOne({
         username: username
     }).then(function(user) {
-        console.log(user.viewHistory);
         responseData.data = user.viewHistory;
-        console.log(responseData);
         res.json(responseData);
     })
 });

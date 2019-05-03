@@ -73,8 +73,9 @@ function renderComment() {
         var html = '';
         for (var i=start; i<end; i++) {
             html += '<div class="messageBox">'+
-                '<p class="name clear"><span class="fl">'+comments[i].username+'</span><span class="fr">'+ formatDate(comments[i].postTime) +'</span></p><p>'+comments[i].content+'</p>'+
-                '</div>';
+                '<p class="name clear"><span class="fl"><h3>'+comments[i].username+' 说：</h3>'+'</span><span class="fr">'+ formatDate(comments[i].postTime) +'</span></p><p>'+comments[i].content+'</p>'+
+                '</div>'+
+                '<hr>';
         }
         $('.messageList').html(html);
     }
