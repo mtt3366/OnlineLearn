@@ -77,10 +77,53 @@ router.get('/view', function (req, res){
             console.log(category);
             data.content.category = category
             res.render('main/view', data);
+            // 
         })
         
     });
 
+});
+
+/*
+* 搜索课程
+* */
+router.post('/searchContent', function(req, res, next) {
+
+    data.contentTitle = req.body.contentTitle || '';
+    data.count = 0;
+    data.page = Number(req.body.page || 1);
+    data.limit = 1000;//这里修改每页的限制
+    data.pages = 0;
+    // ${data.contentTitle}
+    var reg=new RegExp(data.contentTitle);
+    var where = {
+        title: {$regex : reg}
+    };
+
+    Content.where(where).count().then(function(count) {
+
+        data.count = count;
+        //计算总页数
+        data.pages = Math.ceil(data.count / data.limit);
+        //取值不能超过pages
+        data.page = Math.min( data.page, data.pages );
+        //取值不能小于1
+        data.page = Math.max( data.page, 1 );
+
+        var skip = (data.page - 1) * data.limit;
+
+        return Content.where(where).find({
+            title: {$gt: `/${data.contentTitle}/`}
+        }).limit(data.limit).skip(skip).populate(['category', 'user']).sort({
+            addTime: -1
+        });
+
+    }).then(function(contents) {
+        data.contents = contents;
+        console.log(data);
+        // res.render('main/index', data);
+        res.send(data);
+    })
 });
 
 module.exports = router;

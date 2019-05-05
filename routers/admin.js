@@ -302,7 +302,7 @@ router.get('/content', function(req, res) {
         page = Math.max( page, 1 );
 
         var skip = (page - 1) * limit;
-
+    //populate(['category', 'user'])关联表种类和user,这样就会把所有的查出来
         Content.find().limit(limit).skip(skip).populate(['category', 'user']).sort({
             addTime: -1
         }).then(function(contents) {
@@ -401,7 +401,7 @@ router.get('/content/edit', function(req, res) {
 
         return Content.findOne({
             _id: id
-        }).populate('category');
+        }).populate('category');//找到这个Content之后要把category连接起来,然后再编辑的时候吧所属的分类选中,这样才刚好是那个分类
     }).then(function(content) {
 
         if (!content) {

@@ -1,27 +1,33 @@
 {%extends 'layout.html'%}
 
 {%block content%}
-    {%for content in contents%}
-    <div class="listBox">
-        <h1>{{content.title}}</h1>
-        <p class="colDefault">
-            作者：<span class="colInfo">{{content.user.username}}</span> -
-            时间：<span class="colInfo">{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</span> -
-            阅读：<span class="colInfo">{{content.views}}</span> -
-            评论：<span class="colInfo">{{content.comments.length}}</span>
-        </p>
-        <dfn>
-            <p>
-                <span class="jianjie">课程简介</span>{{content.description}}
-                
-            </p>
-            <p><span class="jianjie">课程Tag</span><span class='kechengtag'>{{content.category.name}}</span></p>
     
-        </dfn>
-        <div><span class="jianjie">课程封面</span><img src="public/showCover/{{content.coverUrl}}" alt="" width="400px" height="255px" style="display:block;margin:0 auto"></div>
-        <div class="function"><a href="/view?contentid={{content.id}}">开始学习</a></div>
+    <input type="text" id="searchInput" placeholder="输入内容搜索课程">
+    <button id="searchBtn">搜索课程</button>
+    <div class="div" id="contentList">
+        {%for content in contents%}
+        <div class="listBox">
+            <h1>{{content.title}}</h1>
+            <p class="colDefault">
+                作者：<span class="colInfo">{{content.user.username}}</span> -
+                时间：<span class="colInfo">{{content.addTime|date('Y年m月d日 H:i:s', -8*60)}}</span> -
+                阅读：<span class="colInfo">{{content.views}}</span> -
+                评论：<span class="colInfo">{{content.comments.length}}</span>
+            </p>
+            <dfn>
+                <p>
+                    <span class="jianjie">课程简介</span>{{content.description}}
+                    
+                </p>
+                <p><span class="jianjie">课程Tag</span><span class='kechengtag'>{{content.category.name}}</span></p>
+        
+            </dfn>
+            <div><span class="jianjie">课程封面</span><img src="public/showCover/{{content.coverUrl}}" alt="" width="400px" height="255px" style="display:block;margin:0 auto"></div>
+            <div class="function"><a href="/view?contentid={{content.id}}">开始学习</a></div>
+        </div>
+        {%endfor%}
     </div>
-    {%endfor%}
+    
 
     <div class="pager">
         <ul class="clear">
