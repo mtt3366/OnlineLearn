@@ -490,3 +490,106 @@ h3{
   font-weight: bold;
   color: #009a61;
 }
+
+/* 搜索 */
+.searchBOx{
+  margin-bottom:30px;
+  text-align: center;
+}
+.searchInput{
+  width: 400px;
+  height: 25px;
+  border:1px solid #ccc;
+  border-radius: 3px;
+}
+.searchBtn{
+  display: inline-block;
+  background: #216fc9;
+  text-align: center;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  font-family: '微软雅黑';
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 轮播 */
+.swiper-container {
+  width: 750px;
+  height: 240px;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  border:2px solid rgb(228, 148, 0);
+  box-sizing: border-box;
+  border-radius: 6px;
+  transform: all 0.3s;
+}
+.swiper-slide:hover{
+  -moz-box-shadow:2px 2px 5px #333333; -webkit-box-shadow:2px 2px 5px #333333; box-shadow:2px 2px 5px #333333;
+}
+.titleType{
+  text-align: center;
+  font-size: 20px;
+    font-weight: 600;
+    color: #4D555D;
+    margin: 15px 3px;
+}
+.swiper-slide .itemTitle{
+  font-size: 16px;
+  width: 230px;
+  color: #07111B;
+  line-height: 24px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.kaishixuexi a{
+  display: inline-block;
+  background: #e67e22;
+  text-align: center;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  font-family: '微软雅黑';
+  text-decoration: none;
+  cursor: pointer;
+}
+.swiperTitle{
+  margin-bottom:10px;
+  text-align: center;
+}
+
+.rightBox{
+  -moz-box-shadow:2px 2px 5px #333333; -webkit-box-shadow:2px 2px 5px #333333; box-shadow:2px 2px 5px #333333;
+  border-radius: 4px;
+}
+.listBox{ box-shadow:1px 1px 4px #333333;
+  border-radius: 2px;
+}

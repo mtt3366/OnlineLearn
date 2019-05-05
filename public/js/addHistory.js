@@ -33,7 +33,7 @@ $.ajax({
         for (let index = 0; index < minLength; index++) {
             let item = historyList[index];
             str+=`<div class="item">
-                    <span class="historyTitle shenglue"><a href="/view?contentid=${item.contentId}" >${item.contentTitle}</a></span></span>——<span class="historyTime">${historyformatDate(item.postTime)}</span>
+                    <span class="historyTitle shenglue"><a href="/view?contentid=${item.contentId}" >${item.contentTitle}</a></span></span>—<span class="historyTime">${historyformatDate(item.postTime)}</span>
                  </div>`
         }
         $('#historyArea').html(str)

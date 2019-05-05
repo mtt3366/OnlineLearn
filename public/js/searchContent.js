@@ -11,6 +11,12 @@ $('#searchBtn').on('click',function(){
         success: function(result) {
             console.log(result);
             
+            if(result.contents.length>0){
+                alert('搜索成功') 
+            }else{
+                alert('暂未搜索到结果')
+                return
+            }
             var str = ``
             for (let index = 0; index < result.contents.length; index++) {
                 const content = result.contents[index];
@@ -38,7 +44,8 @@ $('#searchBtn').on('click',function(){
                 `
             }
             $('#contentList').html(str)
-            alert('搜索成功') 
+            $('.pager').hide()
+            
         }
     })
 })
