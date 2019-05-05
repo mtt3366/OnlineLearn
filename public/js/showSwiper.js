@@ -1,11 +1,16 @@
 function renderSwiper(){
      // 渲染数据
 //通过ajax提交请求
+    var commitval = $('#tuijianInput').val()
+    if(commitval==''){//如果这个为空就调用本地的localstory
+        commitval = localStorage.getItem('commitval') ||''
+    }
+
     $.ajax({
         type: 'post',
         url: '/tuijianContent',
         data: {
-            contentTitle:$('#tuijianInput').val(),
+            contentTitle:commitval,
         },
         dataType: 'json',
         success: function(result) {
@@ -48,6 +53,8 @@ function renderSwiper(){
 }
 renderSwiper()
 $('#tuijianBtn').on('click',function(){
+    // 点击的时候设置一下localStorage
+    localStorage.setItem('commitval',$('#tuijianInput').val()) 
     renderSwiper()
 })
 
