@@ -9,7 +9,7 @@ $('#searchBtn').on('click',function(){
         },
         dataType: 'json',
         success: function(result) {
-            console.log(result);
+            // console.log(result);
             
             if(result.contents.length>0){
                 alert('搜索成功') 

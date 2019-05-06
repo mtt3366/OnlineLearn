@@ -66,7 +66,7 @@ router.get('/view', function (req, res){
 
     Content.findOne({
         _id: contentId
-    }).then(function (content) {
+    }).populate('user').then(function (content) {
         content.views++;
         data.content = content;
         content.save();
@@ -74,8 +74,10 @@ router.get('/view', function (req, res){
         Category.findOne({//找到分類名字
             _id:content.category
         }).then(function(category){
-            console.log(category);
+            // console.log(category);
             data.content.category = category
+            console.log('=======');
+            console.log(data);
             res.render('main/view', data);
             // 
         })
@@ -120,7 +122,7 @@ router.post('/searchContent', function(req, res, next) {
 
     }).then(function(contents) {
         data.contents = contents;
-        console.log(data);
+        // console.log(data);
         // res.render('main/index', data);
         res.send(data);
     })
@@ -163,7 +165,7 @@ router.post('/tuijianContent', function(req, res, next) {
 
     }).then(function(contents) {
         data.contents = contents;
-        console.log(data);
+        // console.log(data);
         // res.render('main/index', data);
         res.send(data);
     })

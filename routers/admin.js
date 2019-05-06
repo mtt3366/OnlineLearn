@@ -196,7 +196,7 @@ router.get('/category/edit', function(req, res) {
 });
 
 /*
-* 分类的修改保存
+* 分类的修改
 * */
 router.post('/category/edit', function(req, res) {
 
@@ -367,7 +367,8 @@ router.post('/content/add', function(req, res) {
         description: req.body.description,
         content: req.body.content,
         videoUrl:req.body.videoUrl,
-        coverUrl:req.body.coverUrl
+        coverUrl:req.body.coverUrl,
+        addTime:new Date(),
     }).save().then(function(newContent) {//保存成功后，相关分类的长度加一
         Category.findOne({
             _id:req.body.category//这里是id
@@ -451,7 +452,8 @@ router.post('/content/edit', function(req, res) {
         description: req.body.description,
         content: req.body.content,
         videoUrl:req.body.videoUrl,
-        coverUrl:req.body.coverUrl
+        coverUrl:req.body.coverUrl,
+        addTime:new Date(),
     }).then(function() {
         res.render('admin/success', {
             userInfo: req.userInfo,

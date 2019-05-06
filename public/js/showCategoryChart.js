@@ -8,7 +8,7 @@
     document.querySelectorAll('.categoryLengthItem').forEach(function(item){
         lengthArr.push(item.getAttribute('data-vla'))
     })
-    console.log(nameArr);
+    // console.log(nameArr);
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('showCategoryChart'));
     // 指定图表的配置项和数据
